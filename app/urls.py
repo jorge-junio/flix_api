@@ -1,27 +1,13 @@
 from django.contrib import admin
-from django.urls import path
-from actors.views import ActorListCreateView, ActorRetrieveUpdateDestroyView
-from genres.views import GenreListCreateView, GenreRetrieveUpdateDestroyView
-from movies.views import MovieListCreateView, MovieRetrieveUpdateDestroyView
-from reviews.views import ReviewListCreateView, ReviewRetrieveUpdateDestroyView
+from django.urls import path, include
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('actors/', ActorListCreateView.as_view(), name='actor-collection'),
-    path('actors/<int:pk>/', ActorRetrieveUpdateDestroyView.as_view(),
-         name='actor-resource'),
-
-    path('genres/', GenreListCreateView.as_view(), name='genre-collection'),
-    path('genres/<int:pk>/', GenreRetrieveUpdateDestroyView.as_view(),
-         name='genre-resource'),
-
-    path('movies/', MovieListCreateView.as_view(), name='movie-collection'),
-    path('movies/<int:pk>/', MovieRetrieveUpdateDestroyView.as_view(),
-         name='movie-resource'),
-
-    path('reviews/', ReviewListCreateView.as_view(), name='review-collection'),
-    path('reviews/<int:pk>/', ReviewRetrieveUpdateDestroyView.as_view(),
-         name='review-resource'),
+    # dá include nas urls dos nossos apps
+    path('api/v1/', include('actors.urls')),
+    path('api/v1/', include('genres.urls')),
+    path('api/v1/', include('movies.urls')),
+    path('api/v1/', include('reviews.urls')),
 ]
