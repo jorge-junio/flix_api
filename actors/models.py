@@ -16,5 +16,9 @@ class Actor(models.Model):
         choices=NATIONALITY_CHOICES,
         null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Ator'
+        verbose_name_plural = 'Atores'
+
     def __str__(self):
         return self.name

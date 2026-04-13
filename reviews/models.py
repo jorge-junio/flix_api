@@ -19,5 +19,9 @@ class Review(models.Model):
     )
     comment = models.TextField(null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Avaliação'
+        verbose_name_plural = 'Avaliações'
+
     def __str__(self):
         return self.movie

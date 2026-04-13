@@ -15,5 +15,9 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, related_name='movies')
     resume = models.TextField(null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Filme'
+        verbose_name_plural = 'Filmes'
+
     def __str__(self):
         return self.title
